@@ -7,16 +7,76 @@
   const closeMenu = () => { menu.classList.remove('open'); menuButton.setAttribute('aria-expanded','false'); menuButton.setAttribute('aria-label','Открыть меню'); };
   menuButton.addEventListener('click', () => { const open = menu.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню'); });
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click',closeMenu));
+  document.addEventListener('pointerdown', event => { if (menu.classList.contains('open') && !menu.contains(event.target) && !menuButton.contains(event.target)) closeMenu(); });
+  window.matchMedia('(min-width: 981px)').addEventListener('change', event => { if (event.matches) closeMenu(); });
   document.addEventListener('keydown', event => {if(event.key==='Escape') {closeMenu();closeLightbox();}});
   document.getElementById('year').textContent=String(new Date().getFullYear());
+  const diagram=document.querySelector('.diagram-card[data-stage]');
+  const stageCopy=document.getElementById('diagram-stage-copy');
+  const stageText={
+    water:'Вода движется от влажного грунта по раскрытию трещины. Переключите схему, чтобы увидеть принцип инъекционного заполнения.',
+    sealed:'После подготовки каналов через пакеры подают инъекционный состав. Он заполняет заданную зону дефекта и ограничивает путь воды; технологию выбирают после обследования.'
+  };
+  document.querySelectorAll('[data-diagram-stage]').forEach(button=>button.addEventListener('click',()=>{
+    const stage=button.dataset.diagramStage;
+    if (!Object.hasOwn(stageText,stage)) return;
+    diagram.dataset.stage=stage;
+    stageCopy.textContent=stageText[stage];
+    document.querySelectorAll('[data-diagram-stage]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  }));
 
   const more = document.getElementById('more-photos'); const extra=document.getElementById('extra-gallery');
   more.addEventListener('click', () => {let show=extra.hidden; extra.hidden=!show;more.setAttribute('aria-expanded',String(show));more.innerHTML=show?'Скрыть фотографии <span>↑</span>':'Показать ещё фотографии <span>↓</span>';});
 
-  const lightbox=document.getElementById('lightbox');const lightboxImage=lightbox.querySelector('img');const lightboxClose=lightbox.querySelector('.lightbox-close');let lastFocus=null;
-  function closeLightbox(){if(lightbox.hidden)return; lightbox.hidden=true;document.body.classList.remove('no-scroll');lightboxImage.removeAttribute('src');lastFocus?.focus();}
-  document.querySelectorAll('[data-lightbox]').forEach(link=>link.addEventListener('click',ev=>{ev.preventDefault();lastFocus=link;lightboxImage.src=link.href;lightboxImage.alt=link.querySelector('img')?.alt||'Фотография объекта';lightbox.hidden=false;document.body.classList.add('no-scroll');lightboxClose.focus();}));
-  lightboxClose.addEventListener('click',closeLightbox);lightbox.addEventListener('click',ev=>{if(ev.target===lightbox)closeLightbox();});
+  const lightbox=document.getElementById('lightbox');
+  const lightboxImage=lightbox.querySelector('img');
+  const lightboxClose=lightbox.querySelector('.lightbox-close');
+  const lightboxPrev=lightbox.querySelector('.lightbox-prev');
+  const lightboxNext=lightbox.querySelector('.lightbox-next');
+  const lightboxCounter=lightbox.querySelector('.lightbox-counter');
+  const photos=[...document.querySelectorAll('[data-lightbox]')];
+  let lastFocus=null,activePhoto=0,touchStartX=0;
+  function showPhoto(index){
+    if(!photos.length)return;
+    activePhoto=(index+photos.length)%photos.length;
+    const current=photos[activePhoto];
+    lightboxImage.src=current.href;
+    lightboxImage.alt=current.querySelector('img')?.alt||'Фотография объекта';
+    lightboxCounter.textContent=`${activePhoto+1} / ${photos.length}`;
+  }
+  function closeLightbox(){
+    if(lightbox.hidden)return;
+    lightbox.hidden=true;
+    document.body.classList.remove('no-scroll');
+    lightboxImage.removeAttribute('src');
+    lastFocus?.focus();
+  }
+  photos.forEach((link,index)=>link.addEventListener('click',event=>{
+    event.preventDefault();
+    lastFocus=link;
+    showPhoto(index);
+    lightbox.hidden=false;
+    document.body.classList.add('no-scroll');
+    lightboxClose.focus();
+  }));
+  lightboxPrev.addEventListener('click',()=>showPhoto(activePhoto-1));
+  lightboxNext.addEventListener('click',()=>showPhoto(activePhoto+1));
+  lightboxClose.addEventListener('click',closeLightbox);
+  lightbox.addEventListener('click',event=>{if(event.target===lightbox)closeLightbox();});
+  lightbox.addEventListener('touchstart',event=>{touchStartX=event.changedTouches[0]?.screenX||0;},{passive:true});
+  lightbox.addEventListener('touchend',event=>{const dx=(event.changedTouches[0]?.screenX||0)-touchStartX;if(Math.abs(dx)>55)showPhoto(activePhoto+(dx<0?1:-1));},{passive:true});
+  document.addEventListener('keydown',event=>{
+    if(lightbox.hidden)return;
+    if(event.key==='ArrowRight'){event.preventDefault();showPhoto(activePhoto+1);}
+    if(event.key==='ArrowLeft'){event.preventDefault();showPhoto(activePhoto-1);}
+    if(event.key==='Tab'){
+      const controls=[lightboxClose,lightboxPrev,lightboxNext];
+      const index=controls.indexOf(document.activeElement);
+      if(index<0){event.preventDefault();lightboxClose.focus();return;}
+      if(event.shiftKey&&index===0){event.preventDefault();controls[controls.length-1].focus();}
+      else if(!event.shiftKey&&index===controls.length-1){event.preventDefault();controls[0].focus();}
+    }
+  });
 
   const form=document.getElementById('lead-form');const params=new URLSearchParams(window.location.search);
   ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','yclid'].forEach(key=>{const element=form.elements.namedItem(key);if(element)element.value=(params.get(key)||'').slice(0,200);});
