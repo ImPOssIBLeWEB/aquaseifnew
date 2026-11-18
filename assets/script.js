@@ -80,8 +80,42 @@
 
   const form=document.getElementById('lead-form');const params=new URLSearchParams(window.location.search);
   ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','yclid'].forEach(key=>{const element=form.elements.namedItem(key);if(element)element.value=(params.get(key)||'').slice(0,200);});
-  // Intentionally disabled until a tested server-side MAX integration and privacy policy are configured.
-  form.addEventListener('submit',e=>e.preventDefault());
+  // GitHub Pages demo remains disabled; on a configured PHP host set data-forms-enabled=true.
+  const formEnabled=document.documentElement.dataset.formsEnabled==='true';
+  const button=form.querySelector('button[type="submit"]');
+  const status=document.getElementById('form-status');
+  if(formEnabled){
+    button.disabled=false;
+    button.innerHTML='Отправить заявку <span aria-hidden="true">↗</span>';
+    status.textContent='После отправки мы свяжемся с вами по указанному телефону.';
+  }
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();
+    if(!formEnabled||!form.reportValidity())return;
+    button.disabled=true;
+    const original=button.innerHTML;
+    button.textContent='Отправляем...';
+    status.textContent='Отправляем заявку...';
+    try{
+      const response=await fetch(form.action,{
+        method:'POST',body:new FormData(form),credentials:'same-origin',
+        headers:{Accept:'application/json'}
+      });
+      const result=await response.json();
+      if(!response.ok||!result.success)throw new Error(result.message||'Заявка не доставлена.');
+      status.textContent=result.message||'Заявка отправлена.';
+      form.reset();
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','yclid'].forEach(key=>{
+        const element=form.elements.namedItem(key);
+        if(element)element.value=(params.get(key)||'').slice(0,200);
+      });
+    }catch(error){
+      status.textContent=(error instanceof Error&&error.message)||'Не удалось отправить заявку. Позвоните нам.';
+    }finally{
+      button.disabled=false;
+      button.innerHTML=original;
+    }
+  });
 
   if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     const elements=document.querySelectorAll('.section-heading,.problem,.service-item,.engineering-grid,.portfolio-card,.about-copy,.faq-list');
