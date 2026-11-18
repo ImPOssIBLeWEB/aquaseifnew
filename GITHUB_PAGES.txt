@@ -1,0 +1,8 @@
+AquaSeif — публикация демонстрации через GitHub Pages
+
+1. Загрузить содержимое этой папки в корень ветки main репозитория ImPOssIBLeWEB/aquaseifnew.
+2. GitHub Free: сделать репозиторий Public через Settings > General > Danger Zone > Change repository visibility. Убедиться, что клиент разрешил публичный показ изображений и видео.
+3. Settings > Pages > Build and deployment > Source: Deploy from a branch > Branch: main, /(root) > Save.
+4. После успешного развертывания адрес должен быть https://impossibleweb.github.io/aquaseifnew/
+
+Ограничения демоверсии: форма отключена до подключения MAX, политика персональных данных черновая, сайт содержит noindex,nofollow и не предназначен для запуска рекламы.
