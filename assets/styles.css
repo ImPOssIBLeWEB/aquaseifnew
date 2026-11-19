@@ -130,3 +130,148 @@
 .specialist-facts span{max-width:55%;text-align:right}
 }
 @media(prefers-reduced-motion:reduce){.case-study-frame img{transition:none}}
+
+
+/* 2026 NOVEMBER / AQUASEIF — BRIGHT WATER & ENGINEERING THEME
+   Navy for trust, vivid cobalt for water, turquoise for engineering,
+   warm amber for conversion. No new dependencies. */
+:root{
+  --ink:#102d53;
+  --ink2:#164873;
+  --accent:#ffd36b;
+  --accent2:#16bcd0;
+  --sand:#f4f9ff;
+  --mist:#e9f5ff;
+  --muted:#596f84;
+  --line:#d9e8f3;
+  --paper:#ffffff;
+}
+body{background:#fff;color:var(--ink)}
+::selection{background:#ffe19a;color:#0a376f}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffb629;outline-offset:3px}
+.announcement{background:#073a7b;color:#e4f5ff}
+.announcement .live-dot,.live-dot,.photo-label-dot{background:#44eccd;box-shadow:0 0 0 4px #44eccd33}
+.site-header{border-bottom-color:#dceaf5;background:#fff}
+.site-header.scrolled{box-shadow:0 9px 30px #0656aa1c}
+.logo-symbol{background:linear-gradient(135deg,#006acb,#13b0d5);color:#fff;box-shadow:0 7px 18px #0275ca34}
+.logo-type strong span,.footer-brand span{color:#078abe}
+.logo-type small{color:#637f95}
+.nav-links a{color:#164066}
+.nav-links a:hover{color:#087fd0}
+.header-phone{color:#0a5dac}
+.button-dark{background:#075db8;color:#fff;box-shadow:0 6px 18px #075db81f}
+.button-dark:hover{background:#044a99}
+.button-accent{background:#ffcb54;color:#153a63;box-shadow:0 8px 22px #ffcb543d}
+.button-accent:hover{background:#ffe08f;color:#10345c}
+.button-outline{border-color:#d6ecff8f;background:#ffffff10;color:#fff}
+.button-outline:hover{background:#ffffff25}
+.hero{background:#0954ad}
+.hero-backdrop{background:
+ radial-gradient(ellipse at 22% 0%,#1aa6f96c,transparent 56%),
+ radial-gradient(ellipse at 82% 78%,#04afcf48,transparent 55%),
+ linear-gradient(120deg,#07377e 0%,#0757ac 52%,#0a79c7 100%)}
+.hero-backdrop:after{background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);mask-image:linear-gradient(90deg,transparent,#000)}
+.hero h1 span{color:#ffe083}
+.hero-lead{color:#e7f5ff}
+.eyebrow-light{color:#b8f1ff}
+.hero-metrics strong{color:#fff}
+.hero-metrics small,.hero-metrics span{color:#d7effd}
+.hero-media{border:2px solid #97dfff99;background:#0b457c;box-shadow:20px 25px 60px #07306c75}
+.hero-media>img{filter:contrast(1.06) saturate(1.06)}
+.hero-media:after{background:linear-gradient(0deg,#0636796e,transparent 65%)}
+.hero .button-accent{box-shadow:0 12px 35px #ffcb5461}
+.proof-strip{background:#e8f4ff;border-bottom-color:#c6e2fb}
+.proof-grid>div{border-right-color:#c9e4f9;color:#214e75}
+.proof-num{color:#076bbb}
+.kicker,.eyebrow{color:#0872bd}
+.section-heading h2 em,.problems h2 em,.engineering h2 em,.portfolio-section h2 em,.faq h2 em,.about h2 em{color:#0878c5}
+.problems{background:linear-gradient(#fff,#f8fbff)}
+.problem{border:1px solid #dceaf7;background:#fff;box-shadow:0 12px 30px #0e65b20c;position:relative;overflow:hidden}
+.problem:before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,#047acb,#23cad3)}
+.problem:hover{border-color:#89c9ef;box-shadow:0 22px 45px #075db81f}
+.problem .problem-icon{background:#e8f4ff;color:#076cba}
+.problem a{color:#0864b4}
+.services{background:linear-gradient(135deg,#054990 0%,#0869bb 66%,#097fbf 100%)}
+.services:before{background:radial-gradient(circle at top,#32d8e250,transparent 66%);width:55%}
+.section-heading.light .kicker{color:#aaf7ff}
+.section-heading.light p{color:#e0f3ff}
+.services .service-item{border-bottom-color:#d1e8ff50}
+.services .service-item:hover{background:#ffffff19}
+.services .service-item>span{color:#aff3ff}
+.services .service-item h3,.services .service-item p{color:#fff}
+.services .service-item p{color:#e0ecf8}
+.engineering{background:#eff8ff}
+.diagram-card{border-color:#cde5f8;box-shadow:0 15px 40px #0866a810}
+.diagram-switch button{border-color:#bfdff0;background:#e7f3fd;color:#1c5689}
+.diagram-switch button[aria-pressed="true"]{background:#075cae;border-color:#075cae;color:#fff}
+.diagram-stage-copy{border-left-color:#0999c7;background:#eaf6ff;color:#245477}
+.diagram-card[data-stage="water"] .legend-seal{opacity:.48}
+.portfolio-section{background:#fff}
+.portfolio-card{background:#125085;border-radius:16px;box-shadow:0 12px 32px #065bab1a}
+.portfolio-card img{filter:saturate(1.02) contrast(1.015)}
+.portfolio-card:hover img{filter:saturate(1.15) contrast(1.045)}
+.case-studies{background:linear-gradient(180deg,#eff8ff,#f9fcff)}
+.case-study{border-color:#d6e6f6;box-shadow:0 15px 34px #095eab15}
+.case-study:nth-child(3n + 2){background:#f8fcff;border-color:#b7daf3}
+.case-study-info h3{color:#133d6b}
+.case-study-index{color:#0869bf}
+.case-study-index i{background:#7db9e4}
+.case-cta{color:#076fba;border-bottom-color:#067bc9}
+.case-cta:hover{color:#034d88}
+.case-intro{color:#284b69}
+.case-detail,.case-photo-counter,.case-end p{color:#59768f}
+.case-study-frame{background:#d9ecf8;border-radius:12px}
+.frame-number{background:#0954a1df}
+.video-section{background:linear-gradient(135deg,#ecf7ff,#e8f9fb)}
+.video-heading p,.video-heading .video-note{color:#486b87}
+.video-tag{background:#07519dda}
+.about{background:#fff}
+.about-photo{background:#0d5796;box-shadow:0 18px 45px #0b62a51b}
+.warranty{border-color:#b9dcf3}
+.geo-section{background:linear-gradient(110deg,#07428d,#0866b9);color:#fff}
+.geo-section .kicker{color:#a9efff}
+.geo-section h2 em{color:#ffe08a}
+.geo-section p{color:#e5f2ff}
+.geo-side .big-52{color:#ffffff28}
+.districts span{background:#ffffff13;border-color:#a8deff47}
+.specialist-section{background:#fff}
+.specialist-portrait{background:linear-gradient(135deg,#e0f4ff,#f9fbff);box-shadow:15px 15px 0 #d9eafa}
+.specialist-portrait-label{background:linear-gradient(transparent,#093c7fe9)}
+.specialist-content h2 em{color:#0c7cc8}
+.specialist-name{color:#13528a!important}
+.specialist-content p,.credentials-intro p{color:#53718c}
+.specialist-facts{border-top-color:#cde4f7;border-bottom-color:#cde4f7}
+.specialist-facts strong{color:#0866b8}
+.specialist-facts span{color:#4f718d}
+.credential-card{background:#f2f8ff;border-color:#d4e8f7}
+.credential-card small{color:#0879bd}
+.faq{background:#f7fbff}
+.faq-list,.faq-list details{border-color:#d3e7f7}
+.contact-section{background:
+ radial-gradient(circle at 87% 13%,#1ccada34,transparent 35%),
+ linear-gradient(115deg,#063d81,#0969c4);color:#fff}
+.contact-copy .kicker{color:#b0f0ff}
+.contact-copy h2 em{color:#ffe39b}
+.contact-copy>p{color:#d9edff}
+.contact-phone a{color:#fff}
+.form-card{box-shadow:0 24px 80px #08396e51;border:1px solid #d3ecff}
+.form-title span{color:#0874c0}
+.form-fields input:focus,.form-fields select:focus,.form-fields textarea:focus{border-color:#079bd6}
+.form-status{color:#557389}
+.footer{background:#062853;color:#e3f1ff}
+.footer p{color:#b8d4e7}
+.footer-links a:hover{color:#9de9ff}
+.mobile-contact-bar{border-top-color:#c9e2f5;background:#f7fbfff2}
+.mobile-call{background:#075cae;color:#fff}
+.mobile-portfolio{background:#e1f1ff;color:#074a89}
+.more-photos{border-color:#a4d4f2}
+@media(max-width:690px){
+  .hero{background:#075cad}
+  .hero-backdrop{background:radial-gradient(circle at 100% 0%,#31bffb77,transparent 58%),linear-gradient(150deg,#073c85,#0866b9)}
+  .mobile-contact-bar{box-shadow:0 -9px 28px #0658a21f}
+  .case-studies{background:#f1f8ff}
+  .case-study:nth-child(3n + 2){background:#fff}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-backdrop,.hero .button-accent{animation:none!important}
+}
