@@ -35,14 +35,16 @@
   const lightboxNext=lightbox.querySelector('.lightbox-next');
   const lightboxCounter=lightbox.querySelector('.lightbox-counter');
   const photos=[...document.querySelectorAll('[data-lightbox]')];
+  const visiblePhotos=()=>photos.filter(link=>!link.closest('[hidden]'));
   let lastFocus=null,activePhoto=0,touchStartX=0;
   function showPhoto(index){
-    if(!photos.length)return;
-    activePhoto=(index+photos.length)%photos.length;
-    const current=photos[activePhoto];
+    const available=visiblePhotos();
+    if(!available.length)return;
+    activePhoto=(index+available.length)%available.length;
+    const current=available[activePhoto];
     lightboxImage.src=current.href;
     lightboxImage.alt=current.querySelector('img')?.alt||'Фотография объекта';
-    lightboxCounter.textContent=`${activePhoto+1} / ${photos.length}`;
+    lightboxCounter.textContent=`${activePhoto+1} / ${available.length}`;
   }
   function closeLightbox(){
     if(lightbox.hidden)return;
@@ -54,7 +56,7 @@
   photos.forEach((link,index)=>link.addEventListener('click',event=>{
     event.preventDefault();
     lastFocus=link;
-    showPhoto(index);
+    showPhoto(visiblePhotos().indexOf(link));
     lightbox.hidden=false;
     document.body.classList.add('no-scroll');
     lightboxClose.focus();
@@ -76,6 +78,35 @@
       if(event.shiftKey&&index===0){event.preventDefault();controls[controls.length-1].focus();}
       else if(!event.shiftKey&&index===controls.length-1){event.preventDefault();controls[0].focus();}
     }
+  });
+
+  // Asset-dependent blocks are hidden until the uploaded WebP files are available.
+  // This avoids broken photos on the published Pages demo before manual upload.
+  const imageAvailable = src => new Promise(resolve => {
+    const test = new Image();
+    test.onload = () => resolve(true);
+    test.onerror = () => resolve(false);
+    test.src = src;
+  });
+  window.addEventListener('load', () => {
+    const caseSection = document.getElementById('case-studies');
+    document.querySelectorAll('.case-study[data-preflight]').forEach(article => {
+      const files = article.dataset.preflight.split(',').map(name => 'assets/images/' + name.trim());
+      Promise.all(files.map(imageAvailable)).then(loaded => {
+        if(loaded.every(Boolean)){
+          article.hidden = false;
+          caseSection.hidden = false;
+        }
+      });
+    });
+    const specialistSection = document.getElementById('specialist');
+    Promise.all([
+      'assets/images/alexey-kuznetsov.webp',
+      'assets/images/alexey-qualification-certificate.webp',
+      'assets/images/alexey-qualification-protocol.webp'
+    ].map(imageAvailable)).then(loaded => {
+      if(loaded.every(Boolean)) specialistSection.hidden = false;
+    });
   });
 
   const form=document.getElementById('lead-form');const params=new URLSearchParams(window.location.search);
