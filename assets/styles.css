@@ -367,3 +367,64 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
  .footer-links{grid-template-columns:repeat(2,minmax(0,1fr));padding-top:0;gap:14px}
  .footer-end{grid-column:auto;gap:15px}
 }
+
+
+/* AquaSeif — searchable service landing pages */
+.seo-service-extras{margin:26px 0 0;padding:18px;display:flex;gap:13px 25px;flex-wrap:wrap;align-items:center;border:1px solid #b5eaf859;border-radius:12px;background:#ffffff0d}
+.seo-service-extras span{color:#d1f1fa;font-weight:700;font-size:12px}
+.seo-service-extras a{color:#a3ebf6;font-weight:800;font-size:12px;text-decoration:underline;text-underline-offset:4px}
+.seo-page{background:#f5fbfd;color:#153b52}
+.seo-page .seo-top{position:sticky;top:0;z-index:50;background:#fffffff2;border-bottom:1px solid #d6e9f1;backdrop-filter:blur(12px)}
+.seo-page .seo-topinner{min-height:75px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.seo-page .seo-brand{font-size:19px;font-weight:900;color:#0e3c58;letter-spacing:-.035em}
+.seo-page .seo-brand span{color:#0b8da8}
+.seo-page .seo-nav{display:flex;align-items:center;gap:23px}
+.seo-page .seo-nav>a:not(.button){color:#256078;font-size:12px;font-weight:800}
+.seo-page .seo-breadcrumbs{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 26px;color:#c4e6f0;font-size:11px}
+.seo-page .seo-breadcrumbs a{color:#a8e9f4;text-decoration:underline}
+.seo-page .seo-hero{padding:68px 0 80px;background:radial-gradient(circle at 95% 4%,#21b0d049,transparent 50%),linear-gradient(120deg,#092e49,#0c6b8b);color:#fff}
+.seo-page .seo-herogrid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px}
+.seo-page .seo-hero .kicker{color:#a4eff9}
+.seo-page .seo-hero h1{font-size:clamp(32px,4.4vw,57px);line-height:1.12;letter-spacing:-.055em;font-weight:850;margin:15px 0 20px}
+.seo-page .seo-hero p{font-size:15px;line-height:1.8;color:#dceff7;margin:0 0 28px}
+.seo-page .seo-heroimg{height:365px;overflow:hidden;position:relative;border-radius:14px;border:1px solid #9de1ee89;box-shadow:18px 18px 0 #ffffff10}
+.seo-page .seo-heroimg img{width:100%;height:100%;object-fit:cover;display:block}
+.seo-page .seo-heroimg span{position:absolute;bottom:15px;left:15px;padding:9px 12px;border-radius:7px;background:#092e49e6;color:#fff;font-size:11px}
+.seo-page .seo-facts{margin:24px 0 0;display:flex;flex-wrap:wrap;gap:10px 24px;font-size:11px;color:#bce8f4}
+.seo-page .seo-facts span:before{content:"●";color:#45d6e8;margin-right:8px}
+.seo-page .seo-body{padding:70px 0}
+.seo-page .seo-bodygrid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(220px,.65fr);gap:55px;align-items:start}
+.seo-page .seo-article h2{font-size:clamp(24px,3vw,34px);line-height:1.24;letter-spacing:-.045em;margin:41px 0 17px;color:#123f59}
+.seo-page .seo-article h2:first-child{margin-top:0}
+.seo-page .seo-article p,.seo-page .seo-article li{font-size:14px;line-height:1.9;color:#506d7d;margin:0 0 16px}
+.seo-page .seo-article ul{padding-left:20px;margin:0 0 24px}
+.seo-page .seo-article li{margin-bottom:8px}
+.seo-page .seo-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0}
+.seo-page .seo-steps div{border:1px solid #d6e9f0;border-radius:10px;background:#fff;padding:17px}
+.seo-page .seo-steps b{display:block;font-size:20px;color:#078da9;margin-bottom:12px}
+.seo-page .seo-steps p{font-size:12px;line-height:1.65;margin:0}
+.seo-page .seo-case{display:grid;grid-template-columns:minmax(170px,.75fr) 1fr;align-items:center;gap:20px;border:1px solid #d6e9f0;border-radius:13px;background:#fff;padding:17px;margin:20px 0}
+.seo-page .seo-case img{height:210px;width:100%;object-fit:cover;border-radius:8px}
+.seo-page .seo-case strong{font-size:15px;color:#163d55}
+.seo-page .seo-case p{font-size:12px;margin:10px 0}
+.seo-page .seo-case a{color:#0782a0;font-size:12px;font-weight:800}
+.seo-page .seo-faq details{border-bottom:1px solid #cfe6ed;padding:15px 0}
+.seo-page .seo-faq summary{font-size:14px;font-weight:800;color:#16445e;cursor:pointer}
+.seo-page .seo-faq details p{font-size:12px;margin:12px 0 0}
+.seo-page .seo-side{position:sticky;top:100px;display:grid;gap:14px}
+.seo-page .seo-sidebox{border:1px solid #d4e9f0;background:#fff;border-radius:13px;padding:22px}
+.seo-page .seo-sidebox h3{color:#1a4058;font-size:17px;margin:0 0 13px}
+.seo-page .seo-sidebox p{font-size:12px;color:#607b89;line-height:1.8;margin:0 0 16px}
+.seo-page .seo-sidebox>a:not(.button){display:block;border-top:1px solid #e1eef3;padding:10px 0;color:#0b7896;font-weight:800;font-size:12px;line-height:1.4}
+.seo-page .seo-sidebox .button{display:inline-flex;justify-content:center;align-items:center;padding:12px 13px;font-size:11px;text-align:center}
+.seo-page .seo-geo{background:#eaf7fb;padding:30px 0;border-top:1px solid #d3eaf1}
+.seo-page .seo-geo p{color:#416879;font-size:12px;line-height:1.85}
+.seo-page .seo-bottomcta{padding:53px 0;background:linear-gradient(115deg,#092f4a,#0a7092);color:#fff}
+.seo-page .seo-bottomcta .wrap{display:flex;align-items:center;justify-content:space-between;gap:28px}
+.seo-page .seo-bottomcta h2{color:#fff;font-size:clamp(25px,3.3vw,39px);letter-spacing:-.05em;margin:0 0 12px;line-height:1.2}
+.seo-page .seo-bottomcta p{color:#d7eef6;font-size:13px}
+.seo-page .seo-foot{background:#092a42;padding:24px 0;color:#c9e4ed}
+.seo-page .seo-foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center}
+.seo-page .seo-foot span,.seo-page .seo-foot a{color:#c9e4ed;font-size:11px}
+@media(max-width:950px){.seo-page .seo-herogrid,.seo-page .seo-bodygrid{grid-template-columns:1fr;gap:26px}.seo-page .seo-heroimg{height:300px}.seo-page .seo-side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.seo-page .seo-topinner{min-height:64px}.seo-page .seo-nav>a:not(.button){display:none}.seo-page .seo-nav .button{padding:12px 13px;font-size:10px;min-height:44px}.seo-page .seo-hero{padding:34px 0 48px}.seo-page .seo-hero h1{font-size:clamp(29px,8vw,42px)}.seo-page .seo-hero p{font-size:13px}.seo-page .seo-heroimg{height:255px}.seo-page .seo-body{padding:35px 0 48px}.seo-page .seo-article p,.seo-page .seo-article li{font-size:12px}.seo-page .seo-side,.seo-page .seo-steps,.seo-page .seo-case{grid-template-columns:1fr}.seo-page .seo-case img{height:210px}.seo-page .seo-bottomcta .wrap{flex-direction:column;align-items:flex-start}}

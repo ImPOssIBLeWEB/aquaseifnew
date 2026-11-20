@@ -80,35 +80,6 @@
     }
   });
 
-  // Asset-dependent blocks are hidden until the uploaded WebP files are available.
-  // This avoids broken photos on the published Pages demo before manual upload.
-  const imageAvailable = src => new Promise(resolve => {
-    const test = new Image();
-    test.onload = () => resolve(true);
-    test.onerror = () => resolve(false);
-    test.src = src;
-  });
-  window.addEventListener('load', () => {
-    const caseSection = document.getElementById('case-studies');
-    document.querySelectorAll('.case-study[data-preflight]').forEach(article => {
-      const files = article.dataset.preflight.split(',').map(name => 'assets/images/' + name.trim());
-      Promise.all(files.map(imageAvailable)).then(loaded => {
-        if(loaded.every(Boolean)){
-          article.hidden = false;
-          caseSection.hidden = false;
-        }
-      });
-    });
-    const specialistSection = document.getElementById('specialist');
-    Promise.all([
-      'assets/images/alexey-kuznetsov.webp',
-      'assets/images/alexey-qualification-certificate.webp',
-      'assets/images/alexey-qualification-protocol.webp'
-    ].map(imageAvailable)).then(loaded => {
-      if(loaded.every(Boolean)) specialistSection.hidden = false;
-    });
-  });
-
   const form=document.getElementById('lead-form');const params=new URLSearchParams(window.location.search);
   ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','yclid'].forEach(key=>{const element=form.elements.namedItem(key);if(element)element.value=(params.get(key)||'').slice(0,200);});
   // GitHub Pages demo remains disabled; on a configured PHP host set data-forms-enabled=true.
